@@ -60,7 +60,7 @@ import com.opshub.reconcile.core.Interface.ISystemEntityLookup;
 /**
  * 
  * The class is used to read create update various object in Salesforce. Adapter Implementation for Salesforce system.
- * 
+ * abcd
  *
  */
 public class SalesForceAdapter extends SalesForceBaseAdapter implements HasFieldsMeta, IAttachmentProcessor,
@@ -124,6 +124,24 @@ public class SalesForceAdapter extends SalesForceBaseAdapter implements HasField
 		commentTypes.add(new EAIKeyValue(SalesForceConstants.COMMENT_PRIVATE, SalesForceConstants.COMMENT_PRIVATE));
 		return commentTypes;
 	}
+	
+	/**
+	 * This method orchestrates the Analysis operations.
+	 * 
+	 * @throws OIMAdapterException
+	 */
+	public String analyzeEvent(final MessageEvent messageEvent, final Map<String, Object> systemProperties,
+			final Map<String, Object> customProperties, final Map<String, Object> oldSystemProperties,
+			final Map<String, Object> oldCustomProperties) throws OIMAdapterException {
+
+		String eventUUID = UUID.randomUUID().toString();
+		Map<String, Map<String, Object>> transformedEvent = getTransformedEvent(systemProperties, customProperties,
+				oldSystemProperties, oldCustomProperties);
+		preEvent(sessionId, systemId, null, systemTypeId, messageEvent.getSourceEvent(), eventUUID, transformedEvent);
+
+		return eventUUID;
+	}
+
 
 	/**
 	 * Returns property value for given property
