@@ -37,4 +37,8 @@ public interface ResourceView {
   boolean isPmemCheckEnabled();
 
   long getVCoresAllocatedForContainers();
+
+  /** Adding Lines **/
+  public enum Operation {
+	added, modified, renamed, removed;}
 }
