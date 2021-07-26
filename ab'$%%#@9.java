@@ -41,4 +41,9 @@ public interface ResourceView {
   /** Adding Lines **/
   public enum Operation {
 	added, modified, renamed, removed;}
+	
+  /** new lines added 44-48 **/
+  long getVmemAllocatedForContainers();
+
+  boolean isVmemCheckEnabled();
 }
