@@ -45,6 +45,7 @@ public interface ResourceView {
   /** new lines added 44-48 **/
 
   boolean isVmemCheckEnabled(); /** modified line **/
+  /** modifed line **/
   /** added line **/
   /** added line **/
 }
