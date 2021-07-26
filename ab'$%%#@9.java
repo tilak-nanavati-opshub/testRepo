@@ -43,7 +43,8 @@ public interface ResourceView {
 	added, modified, renamed, removed;}
 	
   /** new lines added 44-48 **/
-  long getVmemAllocatedForContainers();
 
-  boolean isVmemCheckEnabled();
+  boolean isVmemCheckEnabled(); /** modified line **/
+  /** added line **/
+  /** added line **/
 }
