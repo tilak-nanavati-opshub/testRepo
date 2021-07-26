@@ -25,7 +25,8 @@ public interface ResourceView {
    * @return Virtual memory in bytes.
    */
   long getVmemAllocatedForContainers();
-
+	
+	/** added lines**/
   boolean isVmemCheckEnabled();
 
   /**
@@ -44,8 +45,5 @@ public interface ResourceView {
 	
   /** new lines added 44-48 **/
 
-  boolean isVmemCheckEnabled(); /** modified line **/
-  /** modifed line **/
-  /** added line **/
-  /** added line **/
+  boolean isVMemoryCheckEnabled(); /** modified line **/
 }
