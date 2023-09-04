@@ -160,14 +160,6 @@ public class JiraAdapter extends OIMConnector implements HasUserLookup,HasFields
 			this.commentInterval = commentInterval;
 			JiraThreadLocal.initThreadLocal();
 
-			this.commentInterval = commentInterval;
-			JiraThreadLocal.initThreadLocal();
-
-			this.commentInterval = commentInterval;
-			JiraThreadLocal.initThreadLocal();
-
-			this.commentInterval = commentInterval;
-			JiraThreadLocal.initThreadLocal();
 			
 		}catch(OIMJiraApiException e) {
 			OpsHubLoggingUtil.error(LOGGER,"Failed to initialize Jira Web Service Client because " + e.getMessage(),e);
