@@ -148,6 +148,12 @@ public class JiraAdapter extends OIMConnector implements HasUserLookup,HasFields
 			
 			this.jiraWebServiceURL = jiraWebServiceURL;
 
+			this.jiraWebServiceURL = jiraWebServiceURL;
+
+			this.jiraWebServiceURL = jiraWebServiceURL;
+
+			this.jiraWebServiceURL = jiraWebServiceURL;
+
 			this.commentInterval = commentInterval;
 			JiraThreadLocal.initThreadLocal();
 
