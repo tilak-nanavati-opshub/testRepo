@@ -160,6 +160,7 @@ public class JiraAdapter extends OIMConnector implements HasUserLookup,HasFields
 			this.commentInterval = commentInterval;
 			JiraThreadLocal.initThreadLocal();
 
+
 			this.commentInterval = commentInterval;
 			JiraThreadLocal.initThreadLocal();
 
