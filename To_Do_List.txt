@@ -6,3 +6,7 @@ IMPACT ANALYSIS
 1. Log message level -> classification & standardisation for: 1. Error, 2. Debug, 3. Trace level.
 2. Proxy Level support.
 3. getAllCommitsOnFile - this method will also need caching.
+4. Commit for Stash commit.
+5. Temp3 Branch Commit 02.
+6. Temp3 Branch Commit 03.
+7. Temp3 Branch Commit 04.
