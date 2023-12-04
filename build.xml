@@ -1,0 +1,59 @@
+<project name="automation testing" basedir="." default="getLatestTagFromReleaseInfo">
+	
+	<property file="D:\OIM_Release.properties"/>
+	
+	<target name="getAndSaveLatestCommitTags">
+        <echo message="Initiated the process to get latest commit tag:${latestTag}."/>
+		<exec executable="git" failonerror="true" outputproperty="Totag">
+			<arg value="rev-parse"/>
+			<arg value="HEAD"/>
+		</exec>
+		
+		<propertyfile file="tags.properties" comment="This tag details are automatically updated.">
+			<entry key="fromTag" value="${latestTag}"/>
+			<entry key="toTag" value="${Totag}"/>
+		</propertyfile>
+    </target>
+	
+	
+	<target name="uploadFile" description="Invoke curl using Ant to upload the latest coverage file with tags.">
+		<echo message="Initiating the curl request to upload the file."/>
+		<property file="tags.properties"/>
+		<echo message="From tag: ${fromTag}, To tag: ${toTag}"/>
+		
+		<exec executable="curl">
+			<arg value="--request" />
+			<arg value="POST"/>
+			<arg value="--location" />
+			<arg value="http://10.13.27.130:8989/OpsHubWS/rest/api/1.0/file-upload-service/upload-file" />
+			<arg value="--header" />
+			<arg value="Authorization: Basic YWRtaW46cGFzc3dvcmQ=" />
+			<arg value="--form" />
+			<arg value="file=@/C:/Users/Lenovo/Downloads/Code Coverage Reports/XML_REPORT_673/xml/jacoco_673.xml" />
+			<arg value="--form" />
+			<arg value="file_category=COVERAGE" />
+			<arg value="--form" />
+			<arg value="project_id=3" />
+			<arg value="--form" />
+			<arg value="system_id=2" />
+			<arg value="--form" />
+			<arg value="report_type=jacoco" />
+			<arg value="--form" />
+			<arg value="report_language=java" />
+			<arg value="--form" />
+			<arg value="fromTag=${fromTag}" />
+			<arg value="--form" />
+			<arg value="toTag=${toTag}" />
+		</exec>
+	</target>
+	
+	<target name="getLatestTagFromReleaseInfo">
+		<echo message="Switching code base from latest release information from ftp server" />
+		<property name="OIM_ReleaseInfo_File" value="OIM_Release.properties" />
+		<!-- OIM_Release.properties file is regularly updated during our each release build, OIM_ReleaseInfo_URL parameter found in Common_Automation.properties -->
+		<get src="ftp://10.13.27.20/Releases/Documents/OIM_Release.properties" dest="${OIM_ReleaseInfo_File}" verbose="true" />
+		<!-- load this property file so that latestTag key is accessible to use -->
+		<property file="${OIM_ReleaseInfo_File}" />
+		<echo message="Found the latest tag: ${latestTag}"/>
+	</target>
+</project>
